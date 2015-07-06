@@ -2,11 +2,6 @@ FROM centos:centos6
 
 MAINTAINER tadyjp
 
-# ENV PATH $PATH:/usr/bin
-
-# repository
-# RUN yum -y install wget
-
 # system update
 RUN yum -y update
 RUN yum -y groupinstall "Development Tools"

@@ -2,10 +2,8 @@ FROM centos:centos6
 
 MAINTAINER tadyjp
 
-# ENV PATH $PATH:/usr/bin
-
 # repository
-RUN yum -y install wget
+RUN yum -y install wget vim
 
 # system update
 RUN yum -y update
@@ -38,10 +36,5 @@ COPY conf/mruby_proxy.rb  /usr/local/nginx/conf/mruby_proxy.rb
 
 EXPOSE 80
 
-RUN yum -y install vim
-
 CMD ["/usr/local/nginx/sbin/nginx", "-g", "daemon off;"]
-# RUN /usr/local/nginx/sbin/nginx
-# CMD while true; do sleep 3 && echo "sleep!" ; done
-
 
