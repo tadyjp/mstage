@@ -34,4 +34,5 @@ docker rm -f $(docker ps -a | awk '{print $1}')
 docker rmi $(docker images | grep '<none>' | awk '{print $3}')
 
 
+docker inspect --format="{{ .NetworkSettings.IPAddress }}"
 
