@@ -31,10 +31,10 @@ RUN cd /usr/local/src/ && git clone https://github.com/matsumoto-r/ngx_mruby.git
 ENV NGINX_CONFIG_OPT_ENV --with-http_stub_status_module --with-http_ssl_module --prefix=/usr/local/nginx --with-http_realip_module --with-http_addition_module --with-http_sub_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_random_index_module --with-http_secure_link_module
 RUN cd /usr/local/src/ngx_mruby && bash -lc 'sh build.sh' && make install
 
-COPY conf/nginx.conf      /usr/local/nginx/conf/nginx.conf
-COPY conf/mruby_proxy.rb  /usr/local/nginx/conf/mruby_proxy.rb
+ADD conf/nginx.conf /usr/local/nginx/conf/nginx.conf
+ADD conf/mruby_proxy.rb /usr/local/nginx/conf/mruby_proxy.rb
 
 EXPOSE 80
 
 CMD ["/usr/local/nginx/sbin/nginx", "-g", "daemon off;"]
-
+# CMD while true; do sleep 3 && echo "sleep!" ; done
